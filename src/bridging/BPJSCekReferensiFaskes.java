@@ -136,7 +136,6 @@ public final class BPJSCekReferensiFaskes extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbKamar.setAutoCreateRowSorter(true);
-        tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbKamar.setName("tbKamar"); // NOI18N
         Scroll.setViewportView(tbKamar);
 
@@ -362,7 +361,6 @@ public final class BPJSCekReferensiFaskes extends javax.swing.JDialog {
     
     public void tampil2(String faskes) {        
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
             URL = link+"/referensi/faskes/"+faskes+"/2";	
 
 	    HttpHeaders headers = new HttpHeaders();
