@@ -48,7 +48,13 @@ public final class PCareCekRujukan extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
     private int i=0;
-    private String URL="",link="";
+    private String URL="",link="",otorisasi;
+    private HttpHeaders headers;
+    private HttpEntity requestEntity;
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode nameNode;
+    private JsonNode response;
     private PcareApi api=new PcareApi();
     /** Creates new form DlgKamar
      * @param parent
@@ -85,16 +91,29 @@ public final class PCareCekRujukan extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             diagnosa.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil(diagnosa.getText());}
+                public void insertUpdate(DocumentEvent e) {
+                    if(diagnosa.getText().length()>2){
+                        tampil(diagnosa.getText());
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil(diagnosa.getText());}
+                public void removeUpdate(DocumentEvent e) {
+                    if(diagnosa.getText().length()>2){
+                        tampil(diagnosa.getText());
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil(diagnosa.getText());}
+                public void changedUpdate(DocumentEvent e) {
+                    if(diagnosa.getText().length()>2){
+                        tampil(diagnosa.getText());
+                    }
+                }
             });
         } 
         
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));  
+            otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
             link=prop.getProperty("URLAPIPCARE");
         } catch (Exception e) {
             System.out.println("E : "+e);
@@ -236,7 +255,7 @@ public final class PCareCekRujukan extends javax.swing.JDialog {
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            Sequel.AutoComitFalse();
+            
             Sequel.queryu("delete from temporary");
             int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){  
@@ -245,7 +264,7 @@ public final class PCareCekRujukan extends javax.swing.JDialog {
                                 tabMode.getValueAt(r,1).toString()+"','"+
                                 tabMode.getValueAt(r,2).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Pengadaan Ipsrs"); 
             }
-            Sequel.AutoComitTrue();
+            
             Map<String, Object> param = new HashMap<>();                 
             param.put("namars",var.getnamars());
             param.put("alamatrs",var.getalamatrs());
@@ -324,21 +343,19 @@ public final class PCareCekRujukan extends javax.swing.JDialog {
     public void tampil(String diagnosa) {
         try {
             URL = link+"/v1/kunjungan/rujukan/"+diagnosa;
-            HttpHeaders headers = new HttpHeaders();
+            headers = new HttpHeaders();
             headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
 	    headers.add("X-Signature",api.getHmac());
-            String otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
             headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
-	    HttpEntity requestEntity = new HttpEntity(headers);
-	    ObjectMapper mapper = new ObjectMapper();
-            JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-            JsonNode nameNode = root.path("metaData");
+	    requestEntity = new HttpEntity(headers);
+	    root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+            nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
             System.out.println("message : "+nameNode.path("message").asText());
             if(nameNode.path("message").asText().equals("OK")){
                 Valid.tabelKosong(tabMode);
-                JsonNode response = root.path("response");
+                response = root.path("response");
                 if(response.path("list").isArray()){
                     i=1;
                     for(JsonNode list:response.path("list")){
