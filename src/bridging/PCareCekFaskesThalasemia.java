@@ -294,9 +294,8 @@ public final class PCareCekFaskesThalasemia extends javax.swing.JDialog {
         jLabel22.setPreferredSize(new java.awt.Dimension(70, 23));
         panelGlass6.add(jLabel22);
 
-        Tanggal.setEditable(false);
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-10-2018" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-02-2019" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -432,7 +431,6 @@ public final class PCareCekFaskesThalasemia extends javax.swing.JDialog {
 
         Khusus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "THA THALASEMIA", "HEM HEMOFILI" }));
         Khusus.setName("Khusus"); // NOI18N
-        Khusus.setOpaque(false);
         Khusus.setPreferredSize(new java.awt.Dimension(170, 23));
         panelGlass7.add(Khusus);
 
@@ -622,7 +620,19 @@ public final class PCareCekFaskesThalasemia extends javax.swing.JDialog {
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
             if(ex.toString().contains("UnknownHostException")){
-                JOptionPane.showMessageDialog(rootPane,"Koneksi ke server PCARE terputus...!");
+                JOptionPane.showMessageDialog(null,"Koneksi ke server PCare terputus...!");
+            }else if(ex.toString().contains("500")){
+                JOptionPane.showMessageDialog(null,"Server PCare baru ngambek broooh...!");
+            }else if(ex.toString().contains("401")){
+                JOptionPane.showMessageDialog(null,"Username/Password salah. Lupa password? Wani piro...!");
+            }else if(ex.toString().contains("408")){
+                JOptionPane.showMessageDialog(null,"Time out, hayati lelah baaaang...!");
+            }else if(ex.toString().contains("424")){
+                JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
+            }else if(ex.toString().contains("412")){
+                JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
+            }else if(ex.toString().contains("204")){
+                JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
             }
         }
     } 

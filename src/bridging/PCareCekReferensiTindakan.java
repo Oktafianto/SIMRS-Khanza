@@ -178,13 +178,12 @@ public final class PCareCekReferensiTindakan extends javax.swing.JDialog {
 
         jLabel21.setText("TKP :");
         jLabel21.setName("jLabel21"); // NOI18N
-        jLabel21.setPreferredSize(new java.awt.Dimension(35, 23));
+        jLabel21.setPreferredSize(new java.awt.Dimension(30, 23));
         panelGlass6.add(jLabel21);
 
         Jenis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10 RJTP", "20 RITP", "50 Promotif" }));
         Jenis.setName("Jenis"); // NOI18N
-        Jenis.setOpaque(false);
-        Jenis.setPreferredSize(new java.awt.Dimension(95, 23));
+        Jenis.setPreferredSize(new java.awt.Dimension(115, 23));
         panelGlass6.add(Jenis);
 
         jLabel16.setText("Kode/Nama Tindakan :");
@@ -193,7 +192,7 @@ public final class PCareCekReferensiTindakan extends javax.swing.JDialog {
         panelGlass6.add(jLabel16);
 
         diagnosa.setName("diagnosa"); // NOI18N
-        diagnosa.setPreferredSize(new java.awt.Dimension(190, 23));
+        diagnosa.setPreferredSize(new java.awt.Dimension(185, 23));
         diagnosa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 diagnosaKeyPressed(evt);
@@ -219,7 +218,7 @@ public final class PCareCekReferensiTindakan extends javax.swing.JDialog {
         panelGlass6.add(BtnCari);
 
         jLabel17.setName("jLabel17"); // NOI18N
-        jLabel17.setPreferredSize(new java.awt.Dimension(30, 23));
+        jLabel17.setPreferredSize(new java.awt.Dimension(20, 23));
         panelGlass6.add(jLabel17);
 
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
@@ -396,7 +395,19 @@ public final class PCareCekReferensiTindakan extends javax.swing.JDialog {
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
             if(ex.toString().contains("UnknownHostException")){
-                JOptionPane.showMessageDialog(rootPane,"Koneksi ke server PCARE terputus...!");
+                JOptionPane.showMessageDialog(null,"Koneksi ke server PCare terputus...!");
+            }else if(ex.toString().contains("500")){
+                JOptionPane.showMessageDialog(null,"Server PCare baru ngambek broooh...!");
+            }else if(ex.toString().contains("401")){
+                JOptionPane.showMessageDialog(null,"Username/Password salah. Lupa password? Wani piro...!");
+            }else if(ex.toString().contains("408")){
+                JOptionPane.showMessageDialog(null,"Time out, hayati lelah baaaang...!");
+            }else if(ex.toString().contains("424")){
+                JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
+            }else if(ex.toString().contains("412")){
+                JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
+            }else if(ex.toString().contains("204")){
+                JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
             }
         }
     }   
