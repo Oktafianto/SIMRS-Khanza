@@ -114,7 +114,7 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
     private String kdkel="",kdkec="",kdkab="",kdprop="",nosisrute="",BASENOREG="",URUTNOREG="",klg="SAUDARA",pengurutan="",tahun="",bulan="",posisitahun="",awalantahun="",awalanbulan="",
             no_ktp="",tmp_lahir="",nm_ibu="",alamat="",pekerjaan="",no_tlp="",tglkkl="0000-00-00",
             umur="",namakeluarga="",no_peserta="",kelurahan="",kecamatan="",sttsumur="",norawat="",
-            kabupaten="",pekerjaanpj="",alamatpj="",kelurahanpj="",kecamatanpj="",prb="",
+            kabupaten="",pekerjaanpj="",alamatpj="",kelurahanpj="",kecamatanpj="",prb="",peserta="",
             kabupatenpj="",hariawal="",requestJson,URL="",nosep="",user="",penjamin="",link="",
             jasaraharja="",BPJS="",Taspen="",Asabri="",status="Baru",propinsi="",propinsipj="",
             tampilkantni=Sequel.cariIsi("select tampilkan_tni_polri from set_tni_polri");
@@ -5149,6 +5149,7 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
             KdDPJP.setText(Sequel.cariIsi("select nmdpdjp from bridging_sep where no_sep=?",NoRujukan.getText()));
             isPoli();
             cekViaBPJSKartu.tampil(NoKartu.getText());
+            peserta="";
             if(cekViaBPJSKartu.informasi.equals("OK")){
                 Valid.tabelKosong(tabMode);             
                 tabMode.addRow(new Object[]{
@@ -5205,6 +5206,7 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
                 Kdpnj.setText("BPJ");
                 nmpnj.setText("BPJS");
                 Pekerjaan.setText(cekViaBPJSKartu.jenisPesertaketerangan);
+                peserta=cekViaBPJSKartu.jenisPesertaketerangan;
                 tabMode.addRow(new Object[]{
                     "Kelas Tanggungan",":"
                 });
@@ -5789,7 +5791,7 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
                      JenisPelayanan.getSelectedItem().toString().substring(0,1), Catatan.getText(),KdPenyakit.getText(), 
                      NmPenyakit.getText(),KdPoli.getText(),NmPoli.getText(), Kelas.getSelectedItem().toString().substring(0,1), 
                      LakaLantas.getSelectedItem().toString().substring(0,1),user,TNo.getText(),TNm.getText(),
-                     Valid.SetTgl(DTPLahir.getSelectedItem()+""),nmpnj.getText(),CmbJk.getSelectedItem().toString(),NoKartu.getText(),
+                     Valid.SetTgl(DTPLahir.getSelectedItem()+""),peserta,CmbJk.getSelectedItem().toString(),NoKartu.getText(),
                      "0000-00-00 00:00:00",AsalRujukan.getSelectedItem().toString(),Eksekutif.getSelectedItem().toString(),
                      COB.getSelectedItem().toString(),penjamin,TTlp.getText(),Katarak.getSelectedItem().toString(),
                      tglkkl,Keterangan.getText(),Suplesi.getSelectedItem().toString(),
@@ -5797,7 +5799,7 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
                      KdKecamatan.getText(),NmKecamatan.getText(),NoSKDP.getText(),KdDPJP.getText(),NmDPJP.getText()
                  })==true){
                     if(JenisPelayanan.getSelectedIndex()==1){
-                        try {
+                        /*try {
                             URL = link+"/Sep/updtglplg";	
                             headers2= new HttpHeaders();
                             headers2.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -5821,17 +5823,17 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
                             System.out.println("code : "+nameNode.path("code").asText());
                             System.out.println("message : "+nameNode.path("message").asText());
                             JsonNode response = root.path("response");
-                            if(nameNode.path("code").asText().equals("200")){
+                            if(nameNode.path("code").asText().equals("200")){*/
                                 Sequel.mengedit("bridging_sep","no_sep=?","tglpulang=?",2,new String[]{                             
                                      Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+" "+TanggalSEP.getSelectedItem().toString().substring(11,19),
                                      response.asText()
                                 }); 
-                            }else{
+                            /*}else{
                                 JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
                             }
                         }catch (Exception ex) {
                             System.out.println("Notifikasi Bridging : "+ex);
-                        }
+                        }*/
                     }    
                     JOptionPane.showMessageDialog(null,"Proses Selesai...!");
                     if(!nosep.equals("")){

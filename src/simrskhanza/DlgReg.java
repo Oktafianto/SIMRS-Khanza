@@ -78,7 +78,7 @@ import keuangan.DlgBilingParsialRalan;
 import keuangan.DlgLhtPiutang;
 import laporan.DlgBerkasRawat;
 import laporan.DlgDataInsidenKeselamatan;
-import laporan.DlgDataTB;
+import bridging.DlgDataTB;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
 import org.jfree.chart.JFreeChart;
@@ -853,6 +853,7 @@ public final class DlgReg extends javax.swing.JDialog {
         MnJKRA = new javax.swing.JMenuItem();
         MnLembarRalan = new javax.swing.JMenuItem();
         MnBlangkoResep = new javax.swing.JMenuItem();
+        MnSuratJaminanPelayanan = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         MnCheckList = new javax.swing.JMenuItem();
         MnCheckList1 = new javax.swing.JMenuItem();
@@ -986,6 +987,7 @@ public final class DlgReg extends javax.swing.JDialog {
         ppBerkasDigital1 = new javax.swing.JMenuItem();
         ppIKP1 = new javax.swing.JMenuItem();
         MnDiagnosa1 = new javax.swing.JMenuItem();
+        MnTeridentifikasiTB1 = new javax.swing.JMenuItem();
         MnUrut1 = new javax.swing.JMenu();
         MnUrutNoRawatDesc1 = new javax.swing.JMenuItem();
         MnUrutNoRawatAsc1 = new javax.swing.JMenuItem();
@@ -1372,9 +1374,9 @@ public final class DlgReg extends javax.swing.JDialog {
 
         jPopupMenu1.add(MnPilihBilling);
 
-        jSeparator10.setBackground(new java.awt.Color(90, 120, 80));
-        jSeparator10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 120, 80)));
-        jSeparator10.setForeground(new java.awt.Color(90, 120, 80));
+        jSeparator10.setBackground(new java.awt.Color(190, 220, 180));
+        jSeparator10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(190, 220, 180)));
+        jSeparator10.setForeground(new java.awt.Color(190, 220, 180));
         jSeparator10.setName("jSeparator10"); // NOI18N
         jSeparator10.setPreferredSize(new java.awt.Dimension(260, 1));
         jPopupMenu1.add(jSeparator10);
@@ -2121,6 +2123,23 @@ public final class DlgReg extends javax.swing.JDialog {
         });
         jMenu4.add(MnBlangkoResep);
 
+        MnSuratJaminanPelayanan.setBackground(new java.awt.Color(255, 255, 254));
+        MnSuratJaminanPelayanan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnSuratJaminanPelayanan.setForeground(new java.awt.Color(70, 70, 70));
+        MnSuratJaminanPelayanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnSuratJaminanPelayanan.setText("Surat Jaminan Pelayanan BPJS");
+        MnSuratJaminanPelayanan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnSuratJaminanPelayanan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnSuratJaminanPelayanan.setIconTextGap(5);
+        MnSuratJaminanPelayanan.setName("MnSuratJaminanPelayanan"); // NOI18N
+        MnSuratJaminanPelayanan.setPreferredSize(new java.awt.Dimension(320, 26));
+        MnSuratJaminanPelayanan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnSuratJaminanPelayananActionPerformed(evt);
+            }
+        });
+        jMenu4.add(MnSuratJaminanPelayanan);
+
         jPopupMenu1.add(jMenu4);
 
         jMenu3.setBackground(new java.awt.Color(250, 255, 245));
@@ -2539,9 +2558,9 @@ public final class DlgReg extends javax.swing.JDialog {
 
         jPopupMenu1.add(jMenu6);
 
-        jSeparator11.setBackground(new java.awt.Color(90, 120, 80));
-        jSeparator11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 120, 80)));
-        jSeparator11.setForeground(new java.awt.Color(90, 120, 80));
+        jSeparator11.setBackground(new java.awt.Color(190, 220, 180));
+        jSeparator11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(190, 220, 180)));
+        jSeparator11.setForeground(new java.awt.Color(190, 220, 180));
         jSeparator11.setName("jSeparator11"); // NOI18N
         jSeparator11.setPreferredSize(new java.awt.Dimension(260, 1));
         jPopupMenu1.add(jSeparator11);
@@ -2709,7 +2728,7 @@ public final class DlgReg extends javax.swing.JDialog {
         MnDiagnosa.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnDiagnosa.setIconTextGap(5);
         MnDiagnosa.setName("MnDiagnosa"); // NOI18N
-        MnDiagnosa.setPreferredSize(new java.awt.Dimension(240, 26));
+        MnDiagnosa.setPreferredSize(new java.awt.Dimension(200, 26));
         MnDiagnosa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnDiagnosaActionPerformed(evt);
@@ -2726,7 +2745,7 @@ public final class DlgReg extends javax.swing.JDialog {
         ppCatatanPasien.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppCatatanPasien.setIconTextGap(5);
         ppCatatanPasien.setName("ppCatatanPasien"); // NOI18N
-        ppCatatanPasien.setPreferredSize(new java.awt.Dimension(240, 26));
+        ppCatatanPasien.setPreferredSize(new java.awt.Dimension(200, 26));
         ppCatatanPasien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppCatatanPasienBtnPrintActionPerformed(evt);
@@ -2743,7 +2762,7 @@ public final class DlgReg extends javax.swing.JDialog {
         ppBerkasDigital.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppBerkasDigital.setIconTextGap(5);
         ppBerkasDigital.setName("ppBerkasDigital"); // NOI18N
-        ppBerkasDigital.setPreferredSize(new java.awt.Dimension(240, 26));
+        ppBerkasDigital.setPreferredSize(new java.awt.Dimension(200, 26));
         ppBerkasDigital.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppBerkasDigitalBtnPrintActionPerformed(evt);
@@ -2760,7 +2779,7 @@ public final class DlgReg extends javax.swing.JDialog {
         ppIKP.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppIKP.setIconTextGap(5);
         ppIKP.setName("ppIKP"); // NOI18N
-        ppIKP.setPreferredSize(new java.awt.Dimension(240, 26));
+        ppIKP.setPreferredSize(new java.awt.Dimension(200, 26));
         ppIKP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppIKPBtnPrintActionPerformed(evt);
@@ -2777,7 +2796,7 @@ public final class DlgReg extends javax.swing.JDialog {
         MnTeridentifikasiTB.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnTeridentifikasiTB.setIconTextGap(5);
         MnTeridentifikasiTB.setName("MnTeridentifikasiTB"); // NOI18N
-        MnTeridentifikasiTB.setPreferredSize(new java.awt.Dimension(240, 26));
+        MnTeridentifikasiTB.setPreferredSize(new java.awt.Dimension(200, 26));
         MnTeridentifikasiTB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnTeridentifikasiTBActionPerformed(evt);
@@ -3329,7 +3348,7 @@ public final class DlgReg extends javax.swing.JDialog {
         panelBiasa2.setLayout(null);
 
         TglSakit1.setForeground(new java.awt.Color(50, 70, 50));
-        TglSakit1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-03-2019" }));
+        TglSakit1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2019" }));
         TglSakit1.setDisplayFormat("dd-MM-yyyy");
         TglSakit1.setName("TglSakit1"); // NOI18N
         TglSakit1.setOpaque(false);
@@ -3376,7 +3395,7 @@ public final class DlgReg extends javax.swing.JDialog {
         jLabel32.setBounds(176, 10, 20, 23);
 
         TglSakit2.setForeground(new java.awt.Color(50, 70, 50));
-        TglSakit2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-03-2019" }));
+        TglSakit2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2019" }));
         TglSakit2.setDisplayFormat("dd-MM-yyyy");
         TglSakit2.setName("TglSakit2"); // NOI18N
         TglSakit2.setOpaque(false);
@@ -3895,9 +3914,9 @@ public final class DlgReg extends javax.swing.JDialog {
         });
         jPopupMenu2.add(MnBilling1);
 
-        jSeparator12.setBackground(new java.awt.Color(90, 120, 80));
-        jSeparator12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 120, 80)));
-        jSeparator12.setForeground(new java.awt.Color(90, 120, 80));
+        jSeparator12.setBackground(new java.awt.Color(190, 220, 180));
+        jSeparator12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(190, 220, 180)));
+        jSeparator12.setForeground(new java.awt.Color(190, 220, 180));
         jSeparator12.setName("jSeparator12"); // NOI18N
         jSeparator12.setPreferredSize(new java.awt.Dimension(210, 1));
         jPopupMenu2.add(jSeparator12);
@@ -3920,7 +3939,7 @@ public final class DlgReg extends javax.swing.JDialog {
         ppBerkasDigital1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppBerkasDigital1.setIconTextGap(5);
         ppBerkasDigital1.setName("ppBerkasDigital1"); // NOI18N
-        ppBerkasDigital1.setPreferredSize(new java.awt.Dimension(240, 26));
+        ppBerkasDigital1.setPreferredSize(new java.awt.Dimension(200, 26));
         ppBerkasDigital1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppBerkasDigital1BtnPrintActionPerformed(evt);
@@ -3937,7 +3956,7 @@ public final class DlgReg extends javax.swing.JDialog {
         ppIKP1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppIKP1.setIconTextGap(5);
         ppIKP1.setName("ppIKP1"); // NOI18N
-        ppIKP1.setPreferredSize(new java.awt.Dimension(240, 26));
+        ppIKP1.setPreferredSize(new java.awt.Dimension(200, 26));
         ppIKP1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppIKP1BtnPrintActionPerformed(evt);
@@ -3954,13 +3973,30 @@ public final class DlgReg extends javax.swing.JDialog {
         MnDiagnosa1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnDiagnosa1.setIconTextGap(5);
         MnDiagnosa1.setName("MnDiagnosa1"); // NOI18N
-        MnDiagnosa1.setPreferredSize(new java.awt.Dimension(240, 26));
+        MnDiagnosa1.setPreferredSize(new java.awt.Dimension(200, 26));
         MnDiagnosa1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnDiagnosa1ActionPerformed(evt);
             }
         });
         MenuInputData1.add(MnDiagnosa1);
+
+        MnTeridentifikasiTB1.setBackground(new java.awt.Color(255, 255, 254));
+        MnTeridentifikasiTB1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnTeridentifikasiTB1.setForeground(new java.awt.Color(70, 70, 70));
+        MnTeridentifikasiTB1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnTeridentifikasiTB1.setText("Teridentifikasi TB");
+        MnTeridentifikasiTB1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnTeridentifikasiTB1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnTeridentifikasiTB1.setIconTextGap(5);
+        MnTeridentifikasiTB1.setName("MnTeridentifikasiTB1"); // NOI18N
+        MnTeridentifikasiTB1.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnTeridentifikasiTB1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnTeridentifikasiTB1ActionPerformed(evt);
+            }
+        });
+        MenuInputData1.add(MnTeridentifikasiTB1);
 
         jPopupMenu2.add(MenuInputData1);
 
@@ -4414,7 +4450,7 @@ public final class DlgReg extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(60, 23));
         panelGlass7.add(jLabel15);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-03-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -4427,7 +4463,7 @@ public final class DlgReg extends javax.swing.JDialog {
         jLabel17.setPreferredSize(new java.awt.Dimension(24, 23));
         panelGlass7.add(jLabel17);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-03-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -4567,7 +4603,7 @@ public final class DlgReg extends javax.swing.JDialog {
         FormInput.add(jLabel9);
         jLabel9.setBounds(165, 72, 36, 23);
 
-        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-03-2019" }));
+        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2019" }));
         DTPReg.setDisplayFormat("dd-MM-yyyy");
         DTPReg.setName("DTPReg"); // NOI18N
         DTPReg.setOpaque(false);
@@ -8605,6 +8641,49 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }//GEN-LAST:event_MnTeridentifikasiTBActionPerformed
 
+    private void MnTeridentifikasiTB1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnTeridentifikasiTB1ActionPerformed
+        if(tabMode2.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            TNoReg.requestFocus();
+        }else{
+            if(tbPetugas2.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                DlgDataTB resep=new DlgDataTB(null,false);
+                resep.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                resep.setLocationRelativeTo(internalFrame1);
+                resep.isCek();
+                resep.emptTeks();
+                resep.setNoRM(tbPetugas2.getValueAt(tbPetugas2.getSelectedRow(),1).toString());
+                resep.setVisible(true);
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }//GEN-LAST:event_MnTeridentifikasiTB1ActionPerformed
+
+    private void MnSuratJaminanPelayananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSuratJaminanPelayananActionPerformed
+        if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars",var.getnamars());
+            param.put("alamatrs",var.getalamatrs());
+            param.put("kotars",var.getkabupatenrs());
+            param.put("propinsirs",var.getpropinsirs());
+            param.put("kontakrs",var.getkontakrs());
+            param.put("emailrs",var.getemailrs());
+            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            Valid.MyReport("SuratJaminanPelayananRalan.jrxml","report","::[ Surat Jaminan Pelayanan ]::",
+                "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg, reg_periksa.kd_dokter,"+
+                "dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.umur,poliklinik.nm_poli,reg_periksa.p_jawab,"+
+                "reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts_daftar,penjab.png_jawab,pasien.no_peserta,"+
+                "pasien.tgl_lahir from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join penjab on "+
+                "reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj "+
+                "and reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rawat='"+TNoRw.getText()+"' ",param);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_MnSuratJaminanPelayananActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -8777,7 +8856,9 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private javax.swing.JMenuItem MnStatusBaru;
     private javax.swing.JMenuItem MnStatusLama;
     private javax.swing.JMenuItem MnSudah;
+    private javax.swing.JMenuItem MnSuratJaminanPelayanan;
     private javax.swing.JMenuItem MnTeridentifikasiTB;
+    private javax.swing.JMenuItem MnTeridentifikasiTB1;
     private javax.swing.JMenu MnTindakan;
     private javax.swing.JMenu MnTindakan1;
     private javax.swing.JMenu MnUrut;
